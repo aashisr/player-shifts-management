@@ -1,0 +1,13 @@
+{
+    "name": "player-shift-management",
+    "private": true,
+    "workspaces": [
+        "backend",
+        "frontend"
+    ],
+    "devDependencies": {
+        "typescript": "^4.0.0",
+        "eslint": "^7.0.0",
+        "prettier": "^2.0.0"
+    }
+}
