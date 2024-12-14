@@ -1,20 +1,23 @@
 {
-  "name": "player-shifts-management-backend",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mysql2": "^3.11.5",
-    "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.20"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.10.2",
-    "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
-  }
+    "name": "player-shifts-management-backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "start": "nodemon dist/index.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "mysql2": "^3.11.5",
+        "reflect-metadata": "^0.2.2",
+        "typeorm": "^0.3.20"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.10.2",
+        "nodemon": "^3.1.9",
+        "ts-node": "^10.9.2"
+    }
 }
