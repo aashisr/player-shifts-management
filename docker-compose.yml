@@ -17,17 +17,19 @@ services:
     depends_on:
       - db  # Ensure the database service is up before starting the backend
 
-  # frontend:
-  #   build:
-  #     context: .
-  #     dockerfile: frontend/Dockerfile
-  #   container_name: frontend
-  #   ports:
-  #     - "5000:5000"  # Expose the frontend port
-  #   networks:
-  #     - app-network
-  #   depends_on:
-  #     - backend  # Ensure the backend is up before starting the frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"  # Expose the frontend port
+    networks:
+      - app-network
+    depends_on:
+      - backend  # Ensure the backend is up before starting the frontend
+    volumes:
+      - ./frontend:/app # Mount the frontend source code for hot reloading
 
   db:
     image: mysql:8.4
