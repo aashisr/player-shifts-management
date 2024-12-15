@@ -39,9 +39,9 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - 3306:3306
+      - "3306:3306"
     expose:
-      - 3306
+      - "3306"
     networks:
       - app-network
     volumes:
