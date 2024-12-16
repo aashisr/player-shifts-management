@@ -12,8 +12,8 @@ export const AppDataSource = new DataSource({
     database: process.env.MYSQL_DATABASE,
     synchronize: true, // Set to false in production
     logging: false,
-    entities: [__dirname + '/../entity/*.ts'], // Path to entities
-    migrations: [__dirname + '/../migration/*.ts'],
+    entities: [__dirname + '/../entities/*.ts'], // Path to entities
+    migrations: [__dirname + '/../migrations/*.ts'],
     extra: {
         connectionLimit: 5,
         connectTimeout: 10000,
