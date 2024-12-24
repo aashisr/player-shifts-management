@@ -19,5 +19,5 @@ RUN yarn build
 # Step 7: Expose the backend port (default Express port)
 EXPOSE 3000
 
-# Step 8: Define the entrypoint command for the container
-CMD ["yarn", "start"]
+# Apply TypeORM migrations and start the server
+CMD ["sh", "-c", "yarn typeorm migration:run -d src/config/data-source.ts && yarn start"]

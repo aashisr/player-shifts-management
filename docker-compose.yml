@@ -12,6 +12,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "5000:5000"  # Expose the backend port
+    volumes:
+      - ./backend:/app  # Mount the backend source code for hot reloading
     networks:
       - app-network
     depends_on:
