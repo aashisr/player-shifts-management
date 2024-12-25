@@ -7,17 +7,17 @@ WORKDIR /app
 # Copy the package.json and yarn.lock files and tsconfig file
 COPY backend/package.json backend/yarn.lock backend/tsconfig.json ./
 
-# Step 4: Install dependencies
+# Install dependencies
 RUN yarn install
+
+# Install nodemon globally
+RUN yarn global add nodemon
 
 # Copy the backend source code into the container
 COPY backend/src ./src
 
-# Step 6: Build the TypeScript code
-RUN yarn build
+# Expose the backend port (default Express port)
+EXPOSE 5000
 
-# Step 7: Expose the backend port (default Express port)
-EXPOSE 3000
-
-# Apply TypeORM migrations and start the server
-CMD ["sh", "-c", "yarn typeorm migration:run -d src/config/data-source.ts && yarn start"]
+# Apply TypeORM migrations and start the server with nodemon
+CMD ["sh", "-c", "yarn typeorm migration:run -d src/config/data-source.ts && nodemon --watch src --exec 'ts-node' src/index.ts"]

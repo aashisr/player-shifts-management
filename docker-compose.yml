@@ -14,6 +14,7 @@ services:
       - "5000:5000"  # Expose the backend port
     volumes:
       - ./backend:/app  # Mount the backend source code for hot reloading
+      - /app/node_modules  # Ensure node_modules is not overwritten
     networks:
       - app-network
     depends_on:
@@ -32,6 +33,7 @@ services:
       - backend  # Ensure the backend is up before starting the frontend
     volumes:
       - ./frontend:/app # Mount the frontend source code for hot reloading
+      - /app/node_modules  # Ensure node_modules is not overwritten
 
   db:
     image: mysql:8.4
