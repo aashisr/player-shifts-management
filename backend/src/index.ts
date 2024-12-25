@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import { AppDataSource } from './config/data-source';
 import dotenv from 'dotenv';
+import { userRouter } from './routes/userRoutes';
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+app.use('/api/users', userRouter);
 
 // Connect to the database
 AppDataSource.initialize()
