@@ -1,19 +1,23 @@
 import { Router } from 'express';
+import bcrypt from 'bcrypt';
 import { AppDataSource } from '../config/data-source';
 import { User } from '../entities/User';
 
 export const userRouter = Router();
 
 userRouter.get('/', async (req, res) => {
-	const userRepository = AppDataSource.getRepository(User);
-	const users = await userRepository.find();
-	res.json(users);
+    const userRepository = AppDataSource.getRepository(User);
+    const users = await userRepository.find();
+    res.json(users);
 });
 
 userRouter.post('/', async (req, res) => {
-    const { name, email, password_hash, role } = req.body;
+    const { name, email, password, role } = req.body;
 
     const userRepository = AppDataSource.getRepository(User);
+    // Hash the password before saving
+    const saltRounds = 10;
+    const password_hash = await bcrypt.hash(password, saltRounds);
 
     const user = userRepository.create({
         name,

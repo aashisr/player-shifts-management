@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { AppDataSource } from './config/data-source';
 import { userRouter } from './routes/userRoutes';
+import { authRouter } from './routes/authRouter';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cors({
 }));
 
 // Routes
+app.use('/api', authRouter);
 app.use('/api/users', userRouter);
 
 // Connect to the database

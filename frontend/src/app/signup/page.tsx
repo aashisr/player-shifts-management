@@ -23,7 +23,7 @@ export default function SignUp() {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
                 name,
                 email,
-                password_hash: password,
+                password,
                 role
             });
 
