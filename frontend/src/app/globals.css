@@ -23,3 +23,8 @@ body {
 a {
   text-decoration: none;
 }
+
+/* Ensure all paragraph texts have better contrast */
+p {
+  color: #171717; /* Darker color for better contrast */
+}

@@ -19,7 +19,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold mb-4 text-gray-900">
           Manage your player shifts effortlessly
         </h2>
-        <p className="text-lg mb-8 text-gray-800">
+        <p className="text-lg mb-8">
           Our application helps you manage player shifts, track attendance, and
           organize teams efficiently.
         </p>
