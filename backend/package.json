@@ -9,6 +9,7 @@
         "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "mysql2": "^3.11.5",
@@ -16,6 +17,7 @@
         "typeorm": "^0.3.20"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
         "@types/node": "^22.10.2",
         "eslint": "^7.0.0",

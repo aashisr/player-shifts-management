@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
-import { AppDataSource } from './config/data-source';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import { AppDataSource } from './config/data-source';
 import { userRouter } from './routes/userRoutes';
 
 dotenv.config();
@@ -10,6 +11,14 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+// Configure CORS
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
+
+// Routes
 app.use('/api/users', userRouter);
 
 // Connect to the database
