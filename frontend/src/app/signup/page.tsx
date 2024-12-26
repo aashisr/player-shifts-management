@@ -18,7 +18,7 @@ export default function SignUp() {
         setSuccess('');
 
         try {
-            const response = await axios.post('/api/users', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`, {
                 name,
                 email,
                 password_hash: password,
