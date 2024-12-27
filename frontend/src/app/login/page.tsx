@@ -27,6 +27,7 @@ export default function Login() {
         router.push('/dashboard');
       }
     } catch (err) {
+      console.log("Error logging in. Error: ", err);
       setError('Failed to log in. Please check your credentials and try again.');
     }
   };
