@@ -33,3 +33,33 @@ authRouter.post('/login', async (req: Request, res: Response): Promise<any> => {
 
     res.json({ token });
 });
+
+authRouter.get('/me', async (req: Request, res: Response): Promise<void> => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    res.status(401).json({ message: 'Authorization header is missing' });
+    return;
+  }
+
+  const token = authHeader.split(' ')[1];
+  const jwtSecret = process.env.JWT_SECRET;
+  if (!jwtSecret) {
+    res.status(500).json({ message: 'JWT secret is not defined' });
+    return;
+  }
+
+  try {
+    const decoded: any = jwt.verify(token, jwtSecret);
+    const userRepository = AppDataSource.getRepository(User);
+    const user = await userRepository.findOneBy({ id: decoded.userId });
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    res.json(user);
+  } catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+});
