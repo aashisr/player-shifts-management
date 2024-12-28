@@ -7,9 +7,6 @@ export class PlayerGroup {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => User, (user) => user.attendances, { onDelete: 'CASCADE' })
-  player!: User;
-
   @ManyToOne(() => PlayingGroup, (group) => group.playerGroups, { onDelete: 'CASCADE' })
   group!: PlayingGroup;
 

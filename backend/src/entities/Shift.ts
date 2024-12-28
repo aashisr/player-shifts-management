@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from 'typeorm';
 import { PlayingGroup } from './PlayingGroup';
-import { Attendance } from './Attendance';
+import { PlayerShift } from './PlayerShift';
 
 @Entity('shifts')
 export class Shift {
@@ -25,6 +25,6 @@ export class Shift {
   @UpdateDateColumn({ type: 'timestamp' })
   updated_at!: Date;
 
-  @OneToMany(() => Attendance, (attendance) => attendance.shift)
-  attendances!: Attendance[];
+  @OneToMany(() => PlayerShift, (playerShift) => playerShift.shift)
+  playerShifts!: PlayerShift[];
 }

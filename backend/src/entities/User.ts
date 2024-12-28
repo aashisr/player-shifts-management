@@ -1,7 +1,7 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { PlayingGroup } from './PlayingGroup';
 import { CoachSport } from './CoachSport';
-import { Attendance } from './Attendance';
+import { PlayerShift } from './PlayerShift';
 
 @Entity('users')
 export class User {
@@ -32,6 +32,6 @@ export class User {
   @OneToMany(() => CoachSport, (coachSport) => coachSport.coach)
   coachSports!: CoachSport[];
 
-  @OneToMany(() => Attendance, (attendance) => attendance.player)
-  attendances!: Attendance[];
+  @OneToMany(() => PlayerShift, (playerShift) => playerShift.player)
+  playerShifts!: PlayerShift[];
 }
