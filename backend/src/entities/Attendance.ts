@@ -4,18 +4,18 @@ import { User } from './User';
 
 @Entity('attendance')
 export class Attendance {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @ManyToOne(() => Shift, (shift) => shift.attendances, { onDelete: 'CASCADE' })
-    shift!: Shift;
+  @ManyToOne(() => Shift, (shift) => shift.attendances, { onDelete: 'CASCADE' })
+  shift!: Shift;
 
-    @ManyToOne(() => User, (user) => user.attendances, { onDelete: 'CASCADE' })
-    player!: User;
+  @ManyToOne(() => User, (user) => user.attendances, { onDelete: 'CASCADE' })
+  player!: User;
 
-    @Column({ type: 'enum', enum: ['present', 'absent'], default: 'absent' })
-    status!: 'present' | 'absent';
+  @Column({ type: 'enum', enum: ['present', 'absent'], default: 'absent' })
+  status!: 'present' | 'absent';
 
-    @CreateDateColumn({ type: 'timestamp' })
-    created_at!: Date;
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at!: Date;
 }

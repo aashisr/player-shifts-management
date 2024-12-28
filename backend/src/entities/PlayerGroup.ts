@@ -4,15 +4,15 @@ import { PlayingGroup } from './PlayingGroup';
 
 @Entity('players_groups')
 export class PlayerGroup {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @ManyToOne(() => User, (user) => user.attendances, { onDelete: 'CASCADE' })
-    player!: User;
+  @ManyToOne(() => User, (user) => user.attendances, { onDelete: 'CASCADE' })
+  player!: User;
 
-    @ManyToOne(() => PlayingGroup, (group) => group.playerGroups, { onDelete: 'CASCADE' })
-    group!: PlayingGroup;
+  @ManyToOne(() => PlayingGroup, (group) => group.playerGroups, { onDelete: 'CASCADE' })
+  group!: PlayingGroup;
 
-    @CreateDateColumn({ type: 'timestamp' })
-    created_at!: Date;
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at!: Date;
 }
