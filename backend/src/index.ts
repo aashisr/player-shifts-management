@@ -2,8 +2,9 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { AppDataSource } from './config/data-source';
-import { userRouter } from './routes/userRoutes';
 import { authRouter } from './routes/authRouter';
+import { shiftRouter } from './routes/shiftRouter';
+import { userRouter } from './routes/userRouter';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cors({
 
 // Routes
 app.use('/api', authRouter);
+app.use('/api/shifts', shiftRouter);
 app.use('/api/users', userRouter);
 
 // Connect to the database
