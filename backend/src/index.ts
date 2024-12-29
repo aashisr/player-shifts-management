@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { AppDataSource } from './config/data-source';
 import { authRouter } from './routes/authRouter';
+import { playingGroupRouter } from './routes/playingGroupRouter';
 import { shiftRouter } from './routes/shiftRouter';
 import { sportRouter } from './routes/sportRouter';
 import { userRouter } from './routes/userRouter';
@@ -23,6 +24,7 @@ app.use(cors({
 
 // Routes
 app.use('/api', authRouter);
+app.use('/api/playing-groups', playingGroupRouter);
 app.use('/api/shifts', shiftRouter);
 app.use('/api/sports', sportRouter);
 app.use('/api/users', userRouter);
