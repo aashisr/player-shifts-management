@@ -1,6 +1,8 @@
-import { Router } from 'express';
-import { getAllShifts } from '../controllers/shiftController';
+import { Router, Request, Response } from 'express';
+import { getAllShifts, createShift } from '../controllers/shiftController';
 
 export const shiftRouter = Router();
 
-shiftRouter.get('/', getAllShifts);
+shiftRouter.get('/', async (req: Request, res: Response) => {
+	await getAllShifts(req, res);
+});
