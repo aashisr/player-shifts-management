@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { AppDataSource } from './config/data-source';
 import { authRouter } from './routes/authRouter';
 import { shiftRouter } from './routes/shiftRouter';
+import { sportRouter } from './routes/sportRouter';
 import { userRouter } from './routes/userRouter';
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(cors({
 // Routes
 app.use('/api', authRouter);
 app.use('/api/shifts', shiftRouter);
+app.use('/api/sports', sportRouter);
 app.use('/api/users', userRouter);
 
 // Connect to the database
