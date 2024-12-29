@@ -13,5 +13,26 @@ export const getAllShifts = async (req: Request, res: Response): Promise<Respons
     return res.status(500).json({ message: 'Failed to fetch shifts' });
   }
 };
+
+export const createShift = async (req: Request, res: Response): Promise<Response> => {
+  const { groupId, start_time, end_time, court } = req.body;
+
+  try {
+    const shiftRepository = AppDataSource.getRepository(Shift);
+    const groupRepository = AppDataSource.getRepository(PlayingGroup);
+
+    // Check if the group exists
+    const group = await groupRepository.findOne({ where: { id: groupId } });
+    if (!group) {
+      return res.status(404).json({ message: 'Playing group not found' });
+    }
+
+    // Create and save the new shift
+    const shift = shiftRepository.create({ group, start_time, end_time, court });
+    await shiftRepository.save(shift);
+    return res.status(201).json(shift);
+  } catch (error) {
+    console.error('Error creating shift:', error);
+    return res.status(500).json({ message: 'Failed to create shift' });
   }
 };

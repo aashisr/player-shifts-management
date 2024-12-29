@@ -6,3 +6,6 @@ export const shiftRouter = Router();
 shiftRouter.get('/', async (req: Request, res: Response) => {
 	await getAllShifts(req, res);
 });
+shiftRouter.post('/', async (req: Request, res: Response) => {
+	await createShift(req, res);
+});
